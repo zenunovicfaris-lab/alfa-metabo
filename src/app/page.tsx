@@ -484,6 +484,35 @@ export default function AlfaMetaboSEO() {
         </div>
       </section>
 
+      {/* ── Credibility ── */}
+      <section className="py-16 px-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-[#0d0d1e] border border-white/10 rounded-2xl p-8 md:p-10">
+            <span className="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-full px-3 py-1 text-xs font-semibold mb-5">
+              🤝 Iskustvo u BiH
+            </span>
+            <h2 className="font-display text-xl md:text-2xl font-bold mb-4 text-white leading-snug">
+              Iskustvo sa sličnim firmama u Bosni
+            </h2>
+            <p className="text-gray-400 mb-5 leading-relaxed">
+              Radio sam SEO za više firmi u BiH iz oblasti:
+            </p>
+            <ul className="space-y-2 mb-5 text-gray-300">
+              {["stolarija", "građevina", "lokalne usluge"].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-gray-400 leading-relaxed">
+              Nakon optimizacije povećali su broj upita sa Googlea,{" "}
+              <span className="text-white font-medium">u nekim slučajevima i više nego duplo.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── ROI ── */}
       <section id="roi" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
@@ -619,7 +648,17 @@ export default function AlfaMetaboSEO() {
           />
         </div>
         <div className="font-semibold text-gray-400 mb-1">
-          SEOPro BiH · Stručnjaci za lokalni SEO
+          SEO analiza –{" "} 
+          <a
+          href="https://www.fariszenunovic.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-white underline"
+          >Faris Zenunović
+          </a> 
+        </div>
+        <div className="text-gray-600 text-xs mb-1">
+          Lokalni SEO i optimizacija za male biznise u BiH.
         </div>
         <div className="text-gray-600 text-sm">
           Priprema za Alfa Metabo d.o.o. · Travnik, Federacija BiH ·{" "}
