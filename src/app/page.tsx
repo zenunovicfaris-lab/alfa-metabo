@@ -324,9 +324,9 @@ export default function AlfaMetaboSEO() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight"
           >
-            💰 Alfa Metabo →{" "}
-            <span className="text-blue-400">1. mjesto na Googleu</span>
-            {" "}= 15 novih montaža/mj
+            Alfa Metabo →{" "}
+            <span className="text-blue-400">Zašto konkurencija dobija više upita</span>
+            {" "}= za PVC stolariju u Travniku?
           </motion.h1>
 
           <motion.p
