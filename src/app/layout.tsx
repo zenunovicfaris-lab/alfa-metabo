@@ -17,8 +17,8 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: 'SEO Pro BiH - Alfa Metabo',
-  description: 'Lokalni SEO specialist za PVC stolariju u Travniku, BiH',
+  title: 'Alfa Metabo | 1. Mjesto na Googleu – SEO za PVC Stolariju',
+  description: 'Lokalni SEO za Alfa Metabo PVC stolariju u Travniku, BiH. 1. mjesto na Googleu za 90 dana ili povrat novca.',
 }
 
 export default function RootLayout({

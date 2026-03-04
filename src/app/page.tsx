@@ -109,7 +109,7 @@ function ProblemCard({
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       onClick={onClick}
-      className="bg-[#0d1f12] border border-white/10 rounded-2xl overflow-hidden cursor-pointer group hover:border-red-500/40 hover:shadow-[0_0_24px_rgba(239,68,68,0.2)] transition-all duration-300"
+      className="bg-[#0d0d1e] border border-white/10 rounded-2xl overflow-hidden cursor-pointer group hover:border-red-500/40 hover:shadow-[0_0_24px_rgba(220,38,38,0.2)] transition-all duration-300"
     >
       <div className="relative h-48 overflow-hidden bg-black">
         <Image
@@ -120,7 +120,7 @@ function ProblemCard({
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f12] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d1e] via-transparent to-transparent" />
       </div>
       <div className="p-5">
         <h3 className="font-bold text-white mb-2 leading-snug">{problem.title}</h3>
@@ -148,7 +148,7 @@ function SolutionCard({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:shadow-[0_0_24px_rgba(34,197,94,0.4)] hover:border-green-500/30 transition-all duration-300"
+      className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 hover:shadow-[0_0_24px_rgba(59,130,246,0.4)] hover:border-blue-500/30 transition-all duration-300"
     >
       <div className="text-4xl mb-4">{solution.icon}</div>
       <h3 className="font-bold text-lg mb-2 text-white">{solution.title}</h3>
@@ -169,7 +169,6 @@ export default function AlfaMetaboSEO() {
 
   const { ref: finalCtaRef, inView: finalCtaInView } = useInView({ threshold: 0.3 });
 
-  // ESC key to close modal
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelectedProblem(null);
@@ -179,39 +178,52 @@ export default function AlfaMetaboSEO() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#030a06] text-[#f0fdf4] overflow-x-hidden">
+    <div className="min-h-screen bg-[#050510] text-[#f0f4ff] overflow-x-hidden">
 
       {/* ── Scroll Progress Bar ── */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-green-500 origin-left z-[100]"
-        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-0.5 origin-left z-[100]"
+        style={{
+          scaleX: scrollYProgress,
+          background: "linear-gradient(90deg, #DC2626, #3B82F6)",
+        }}
       />
 
-      {/* ── NavBar ── */}
-      <nav className="fixed top-1 left-0 right-0 z-50 px-4 py-3">
-        <div className="max-w-6xl mx-auto flex items-center justify-between bg-black/50 backdrop-blur-md rounded-2xl px-6 py-3 border border-white/10">
-          <div className="font-bold text-green-400 text-lg font-display">Alfa Metabo SEO</div>
+      {/* ── Header ── */}
+      <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#050510]/90 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
+          {/* Logo */}
+          <Image
+            src="/screenshots/alfa-logo.png"
+            alt="Alfa Metabo"
+            width={160}
+            height={48}
+            className="w-32 md:w-40 h-10 object-contain"
+            priority
+          />
 
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm text-gray-400 hover:text-green-400 transition-colors"
+                className="text-sm text-gray-400 hover:text-white transition-colors"
               >
                 {link.label}
               </a>
             ))}
-          </div>
+          </nav>
 
+          {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+              href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
               target="_blank"
               rel="noreferrer"
-              className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold py-2 px-4 rounded-xl text-sm transition-all"
+              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 hover:from-red-500 hover:to-blue-400 text-white font-bold py-2 px-5 rounded-full text-sm transition-all hover:shadow-lg"
             >
-              💬 WhatsApp
+              Kontaktiraj nas
             </a>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -230,24 +242,25 @@ export default function AlfaMetaboSEO() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden mt-2 max-w-6xl mx-auto"
+              className="overflow-hidden border-t border-white/10 bg-[#050510]/95 backdrop-blur-md"
             >
-              <div className="bg-[#0d1f12] border border-white/10 rounded-2xl p-4 flex flex-col gap-1">
+              <div className="px-4 py-3 flex flex-col gap-1">
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-gray-300 hover:text-green-400 py-2 px-3 rounded-xl hover:bg-white/5 transition-all"
+                    className="text-gray-300 hover:text-white py-2 px-3 rounded-xl hover:bg-white/5 transition-all"
                   >
                     {link.label}
                   </a>
                 ))}
                 <a
-                  href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+                  href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-green-500 text-black font-bold py-3 px-4 rounded-xl text-center mt-2"
+                  onClick={() => setMenuOpen(false)}
+                  className="bg-gradient-to-r from-red-600 to-blue-500 text-white font-bold py-3 px-4 rounded-xl text-center mt-2"
                 >
                   💬 WhatsApp
                 </a>
@@ -255,35 +268,52 @@ export default function AlfaMetaboSEO() {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </header>
 
       {/* ── Hero ── */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-20"
       >
         <motion.div
           style={{ y: heroY }}
-          className="absolute inset-0 bg-gradient-to-br from-[#030a06] via-[#0d2818] to-[#0f2d2d]"
+          className="absolute inset-0 bg-gradient-to-br from-[#050510] via-[#0a0a28] to-[#0a1020]"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.07)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.08)_0%,transparent_70%)]" />
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px)",
+              "linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          {/* Logo in hero */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-8"
+          >
+            <Image
+              src="/screenshots/alfa-logo.png"
+              alt="Alfa Metabo"
+              width={200}
+              height={60}
+              className="w-40 md:w-56 h-auto object-contain"
+              priority
+            />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <span className="inline-flex items-center gap-2 bg-green-500/10 text-green-400 border border-green-500/30 rounded-full px-4 py-2 text-sm font-semibold mb-8">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 border border-red-500/30 rounded-full px-4 py-2 text-sm font-semibold mb-8">
+              <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
               ⚡ Rezultati za 90 dana ili povrat novca
             </span>
           </motion.div>
@@ -295,7 +325,7 @@ export default function AlfaMetaboSEO() {
             className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight"
           >
             💰 Alfa Metabo →{" "}
-            <span className="text-green-400">1. mjesto na Googleu</span>
+            <span className="text-blue-400">1. mjesto na Googleu</span>
             {" "}= 15 novih montaža/mj
           </motion.h1>
 
@@ -315,16 +345,16 @@ export default function AlfaMetaboSEO() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+              href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-8 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 hover:from-red-500 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)]"
             >
               💬 Zatraži besplatnu analizu
             </a>
             <a
               href="#rjesenja"
-              className="flex items-center justify-center gap-2 border border-green-500/40 text-green-400 hover:bg-green-500/10 font-semibold py-4 px-8 rounded-2xl text-lg transition-all"
+              className="flex items-center justify-center gap-2 border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 font-semibold py-4 px-8 rounded-2xl text-lg transition-all"
             >
               Vidi kako funkcioniše →
             </a>
@@ -395,7 +425,7 @@ export default function AlfaMetaboSEO() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.92, y: 20 }}
                   transition={{ type: "spring", bounce: 0.2 }}
-                  className="bg-[#0d1f12] border border-white/10 rounded-2xl overflow-hidden"
+                  className="bg-[#0d0d1e] border border-white/10 rounded-2xl overflow-hidden"
                   onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientY)}
                   onTouchEnd={(e) => {
                     if (e.changedTouches[0].clientY - touchStart > 80) {
@@ -432,15 +462,15 @@ export default function AlfaMetaboSEO() {
       </AnimatePresence>
 
       {/* ── Solutions ── */}
-      <section id="rjesenja" className="py-24 px-6 bg-[#0d1f12]">
+      <section id="rjesenja" className="py-24 px-6 bg-[#0d0d1e]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block bg-green-500/10 text-green-400 border border-green-500/30 rounded-full px-4 py-2 text-sm font-semibold mb-4">
+            <span className="inline-block bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-full px-4 py-2 text-sm font-semibold mb-4">
               ✅ Naš plan akcije
             </span>
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
               Kompletna SEO strategija{" "}
-              <span className="text-green-400">za Alfa Metabo</span>
+              <span className="text-blue-400">za Alfa Metabo</span>
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto">
               Lokalni SEO koji donosi kupce + content strategija koja gradi autoritet.
@@ -477,9 +507,9 @@ export default function AlfaMetaboSEO() {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="bg-[#0d1f12] border border-white/10 rounded-2xl p-6 text-center"
+                className="bg-[#0d0d1e] border border-white/10 rounded-2xl p-6 text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-1">
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-1">
                   <CountUp end={stat.end} />
                 </div>
                 <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
@@ -487,7 +517,7 @@ export default function AlfaMetaboSEO() {
             ))}
           </div>
 
-          <div className="bg-[#0d1f12] border border-green-500/20 rounded-2xl p-8">
+          <div className="bg-[#0d0d1e] border border-blue-500/20 rounded-2xl p-8">
             {(
               [
                 ["5 montaža × 500 KM", "= 2.500 KM/mj", false],
@@ -499,11 +529,11 @@ export default function AlfaMetaboSEO() {
               <div
                 key={i}
                 className={`flex justify-between items-center py-4 border-b border-white/5 last:border-0 font-mono ${
-                  highlight ? "text-green-400 font-bold text-lg pt-6" : "text-gray-300"
+                  highlight ? "text-blue-400 font-bold text-lg pt-6" : "text-gray-300"
                 }`}
               >
                 <span>{left}</span>
-                <span className={highlight ? "text-green-400 text-xl" : "text-white"}>
+                <span className={highlight ? "text-blue-400 text-xl" : "text-white"}>
                   {right}
                 </span>
               </div>
@@ -513,27 +543,27 @@ export default function AlfaMetaboSEO() {
       </section>
 
       {/* ── Guarantee ── */}
-      <section className="py-24 px-6 bg-[#0d1f12]">
+      <section className="py-24 px-6 bg-[#0d0d1e]">
         <div className="max-w-2xl mx-auto text-center">
           <div
-            className="border border-green-500/40 rounded-3xl p-10 md:p-16"
-            style={{ boxShadow: "0 0 80px rgba(34,197,94,0.07)" }}
+            className="border border-blue-500/40 rounded-3xl p-10 md:p-16"
+            style={{ boxShadow: "0 0 80px rgba(59,130,246,0.07)" }}
           >
             <div className="text-7xl mb-6">🏆</div>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               1. mjesto na Googleu
               <br />
-              <span className="text-green-400">ili BESPLATNO!</span>
+              <span className="text-blue-400">ili BESPLATNO!</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg mx-auto">
               Ako ne dostignemo 1. stranicu za dogovorene ključne pojmove u 90 dana,
               nastavljamo raditi besplatno dok ne dostignemo.
             </p>
             <a
-              href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+              href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-10 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 hover:from-red-500 hover:to-blue-400 text-white font-bold py-4 px-10 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]"
             >
               💬 Pokreni SEO kampanju
             </a>
@@ -546,7 +576,7 @@ export default function AlfaMetaboSEO() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
             Spreman za{" "}
-            <span className="text-green-400">1. mjesto</span>
+            <span className="text-blue-400">1. mjesto</span>
             {" "}na Googleu?
           </h2>
           <p className="text-gray-400 text-lg mb-12">
@@ -554,24 +584,24 @@ export default function AlfaMetaboSEO() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+              href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
               target="_blank"
               rel="noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-8 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 hover:from-red-500 hover:to-blue-400 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(220,38,38,0.4)]"
             >
               💬 WhatsApp
             </a>
             <a
               href="#calendly"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-teal-500/40 text-teal-400 hover:bg-teal-500/10 font-semibold py-4 px-8 rounded-2xl text-lg transition-all"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 font-semibold py-4 px-8 rounded-2xl text-lg transition-all"
             >
               📅 Zakaži poziv
             </a>
             <a
-              href="tel:+38762000000"
+              href="tel:+387603055894"
               className="text-gray-500 hover:text-white transition-colors text-sm underline underline-offset-4"
             >
-              Zovi sad: +387 62 000 000
+              Zovi sad: +387 60 305 5894
             </a>
           </div>
         </div>
@@ -579,6 +609,15 @@ export default function AlfaMetaboSEO() {
 
       {/* ── Footer ── */}
       <footer className="border-t border-white/5 py-10 px-6 text-center">
+        <div className="flex justify-center mb-4">
+          <Image
+            src="/screenshots/alfa-logo.png"
+            alt="Alfa Metabo"
+            width={120}
+            height={36}
+            className="h-9 w-auto object-contain opacity-60"
+          />
+        </div>
         <div className="font-semibold text-gray-400 mb-1">
           SEOPro BiH · Stručnjaci za lokalni SEO
         </div>
@@ -596,13 +635,13 @@ export default function AlfaMetaboSEO() {
             animate={{ y: 0 }}
             exit={{ y: 100 }}
             transition={{ type: "spring", bounce: 0 }}
-            className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-[#030a06]/95 backdrop-blur border-t border-white/10 z-50"
+            className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-[#050510]/95 backdrop-blur border-t border-white/10 z-50"
           >
             <a
-              href="https://wa.me/38762000000?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
+              href="https://wa.me/387603055894?text=Zanima%20me%20SEO%20za%20Alfa%20Metabo"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-center gap-2 bg-green-500 text-black font-bold py-4 rounded-2xl text-lg w-full"
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 text-white font-bold py-4 rounded-2xl text-lg w-full"
             >
               💬 Besplatna SEO analiza
             </a>

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --primary-red: 220 38 38;    /* #DC2626 */
+    --primary-blue: 59 130 246;  /* #3B82F6 */
+    --dark-bg: 5 5 16;           /* #050510 */
+    --dark-card: 13 13 30;       /* #0D0D1E */
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -13,6 +22,6 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #22c55e;
+  background: linear-gradient(to bottom, #DC2626, #3B82F6);
   border-radius: 4px;
 }
