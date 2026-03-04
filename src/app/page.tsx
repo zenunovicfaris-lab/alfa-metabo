@@ -314,7 +314,7 @@ export default function AlfaMetaboSEO() {
           >
             <span className="inline-flex items-center gap-2 bg-red-500/10 text-red-400 border border-red-500/30 rounded-full px-4 py-2 text-sm font-semibold mb-8">
               <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-              ⚡ Rezultati za 90 dana ili povrat novca
+              Rezultati za 90 dana ili povrat novca
             </span>
           </motion.div>
 
